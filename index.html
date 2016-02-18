@@ -6,15 +6,15 @@
 </head>
 
 <body ng-controller="TweetCtrl">
-<div>
-    <ul class="chatbox">
-        <li ng-repeat="message in messages">{{ message.user }}: {{ message.text }}</li>
-    </ul>
-    <form ng-submit="addMessage()">
-        <input ng-model="message" type="text">
-        <input value="Add Message" type="submit">
-    </form>
-</div>
+    <div>
+        <ul class="chatbox">
+            <li ng-repeat="message in messages">{{ message.user }}: {{ message.text }}</li>
+        </ul>
+        <form ng-submit="addMessage()">
+            <input ng-model="message" type="text">
+            <input value="Add Message" type="submit">
+        </form>
+    </div>
 
 
 <!-- Modules -->
