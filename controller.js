@@ -4,10 +4,12 @@
 app.controller("TweetCtrl", ["$scope", "chatMessages",
     // we pass our new chatMessages factory into the controller
     function($scope, chatMessages) {
-        $scope.user = "Marc ";
+        $scope.user = "Marc Cano";
 
         // we add chatMessages array to the scope to be used in our ng-repeat
         $scope.messages = chatMessages;
+
+        $scope.img = chatMessages;
 
         // a method to create new messages; called by ng-submit
         $scope.addMessage = function() {
@@ -21,6 +23,7 @@ app.controller("TweetCtrl", ["$scope", "chatMessages",
             // reset the message input
             $scope.message = "";
         };
+
 
         // if the messages are empty, add something for fun!
         $scope.messages.$loaded(function() {
