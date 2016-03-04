@@ -9,8 +9,6 @@ app.controller("TweetCtrl", ["$scope", "chatMessages",
         // we add chatMessages array to the scope to be used in our ng-repeat
         $scope.messages = chatMessages;
 
-        $scope.img = chatMessages;
-
         // a method to create new messages; called by ng-submit
         $scope.addMessage = function() {
             // calling $add on a synchronized array is like Array.push(),
