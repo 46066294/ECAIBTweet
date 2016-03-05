@@ -14,19 +14,31 @@
 
     <body ng-controller="TweetCtrl">
         <div>
-            <div class="container">
-                <div class="jumbotron">
-                         <h1>Chat </h1>
+            <div class="jumbotron"><!--http://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp-->
+
+                <div class="container">
+                         <h1>ECAIBTweet</h1>
                          <p>La mejor comunidad despues de forocoches</p>
                 </div>
 
+                <p><input type="text" ng-model="usuari"><input type="button" value="_login" ng-click="setUser()"></p>
+                <p>_user: {{ userId }}</p>
+                <p>_name: {{ userName.$value }}</p>
+                <p>_description: {{ userDesc.$value }}</p>
+                <p><input type="text" ng-model="usuari2Follow"><input type="button" value="_follow" ng-click="follow()"></p>
+                <p><input type="text" ng-model="tweetTxt"><input type="button" value="_tweet" ng-click="tweet()"></p>
+
                 <ul class="chatbox">
-                    <li ng-repeat="message in messages">{{ message.user }}: {{ message.text }}</li>
+                    <li ng-repeat="follow in followings">{{ follow.idUser }}</li>
                 </ul>
-                <form ng-submit="addMessage()">
-                    <input ng-model="message" type="text">
-                    <input value="Add Message" type="submit">
-                </form>
+                <div class="col-md-offset-2 col-md-6" id="right">
+                    <h3>_feed:</h3>
+
+                    <ul class="chatbox">
+                        <li ng-repeat="tweet in userTweets">{{ userId }}: {{ tweet.text }}</li>
+
+                    </ul>
+                </div>
             </div>
         </div>
 
