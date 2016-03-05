@@ -58,6 +58,11 @@ app.controller('TweetCtrl', ["$scope", "getUser", "getUserTweets", "getFollowing
             $scope.followings.$add({idUser: $scope.usuari2Follow});
             $scope.usuari2Follow = "";
         }
+/*
+        $scope.followTweets = function() {
+            $scope.followingTweets.$add({idUser: $scope.tweetsDeSeguidores});
+            $scope.tweetsDeSeguidores = "";
+        }*/
 
         $scope.followTweets = function() {
             $scope.followingTweets.$add({idUser: $scope.tweetsDeSeguidores});
@@ -101,7 +106,7 @@ app.factory("getFollowingTweets", ["$firebaseArray",
     function($firebaseArray) {
         return function(usuari) {
             var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
-            return $firebaseArray(ref.child(usuari).child("tweets"));
+            return $firebaseArray(ref.child(usuari.followings).child("tweets"));
         };
     }
 ]);
