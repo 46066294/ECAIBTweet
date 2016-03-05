@@ -40,12 +40,12 @@ app.controller('TweetCtrl', ["$scope", "getUser", "getUserTweets", "getFollowing
 
         $scope.setUser = function() {
             $scope.userId = $scope.usuari;
-            $scope.usuari = $scope.usuari;
+            //$scope.usuari = $scope.usuari;
             var dades = getUser($scope.userId);
             $scope.userName = dades.nom;
             $scope.userDesc = dades.desc;
             $scope.userTweets = getUserTweets($scope.userId);
-            $scope.followings = getFollowings($scope.userId);//////////////////
+            $scope.followings = getFollowings($scope.userId);
             $scope.followingTweets = getFollowingTweets($scope.userId);
         };
 
@@ -58,6 +58,12 @@ app.controller('TweetCtrl', ["$scope", "getUser", "getUserTweets", "getFollowing
             $scope.followings.$add({idUser: $scope.usuari2Follow});
             $scope.usuari2Follow = "";
         }
+
+        $scope.followTweets = function() {
+            $scope.followingTweets.$add({idUser: $scope.tweetsDeSeguidores});
+            $scope.tweetsDeSeguidores = "";
+        }
+
     }]);
 
 ////////////////FACTORY///////////////////////////////////////

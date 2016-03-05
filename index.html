@@ -36,6 +36,8 @@
 
                     <ul class="chatbox">
                         <li ng-repeat="tweet in userTweets">{{ userId }}: {{ tweet.text }}</li>
+                        <p>Following:</p>
+                        <li ng-repeat="followTweets in followingTweets">{{ userId }}: {{ tweet.text }}</li>
 
                     </ul>
                 </div>
