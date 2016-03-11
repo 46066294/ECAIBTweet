@@ -1,54 +1,77 @@
 <html ng-app="ECAIBTweet">
     <head>
+        <meta charset="UTF-8">
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="estil.css">
+
+        <!-- Angular -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+        <!-- Firebase -->
         <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+        <!-- AngularFire -->
         <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
-        <!-- bootstrap  -->
-
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     </head>
 
     <body ng-controller="TweetCtrl">
-        <div>
+
+        <div class="cap">
+            <p><input type="text" ng-model="usuari"><input type="button" value="login" ng-click="setUser()"></p>
+        </div>
+        <div class="container">
+
             <div class="jumbotron"><!--http://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp-->
+                     <h1>ECAIBTweet</h1>
+                     <p>Benvinguts i Benvingudes als tweets de l'INS Poblenou</p>
+            </div>
 
-                <div class="container">
-                         <h1>ECAIBTweet</h1>
-                         <p>La mejor comunidad despues de forocoches</p>
+            <h4>
+                <div class="dades">
+                    <p>Usuari: {{ userId }}</p>
+                    <p>Nom: {{ userName.$value }}</p>
+                    <p>Descripcio: {{ userDesc.$value }}</p>
+                    <div class="followB"><input type="text" ng-model="usuari2Follow"><input type="button" value="follow" ng-click="follow()"></div>
+                    <div class="tweetB"><input type="text" ng-model="tweetTxt"><input type="button" value="tweet" ng-click="tweet()"></div>
                 </div>
+            </h4>
 
-                <p><input type="text" ng-model="usuari"><input type="button" value="_login" ng-click="setUser()"></p>
-                <p>_user: {{ userId }}</p>
-                <p>_name: {{ userName.$value }}</p>
-                <p>_description: {{ userDesc.$value }}</p>
-                <p><input type="text" ng-model="usuari2Follow"><input type="button" value="_follow" ng-click="follow()"></p>
-                <p><input type="text" ng-model="tweetTxt"><input type="button" value="_tweet" ng-click="tweet()"></p>
+
+            <h3>Following:</h3>
+            <ul class="chatbox">
+                <li ng-repeat="follow in followings">{{ follow.idUser }}</li>
+            </ul>
+
+                <h3>Missatges:</h3>
 
                 <ul class="chatbox">
-                    <li ng-repeat="follow in followings">{{ follow.idUser }}</li>
+                    <li ng-repeat="tweet in userTweets">{{ userId }}: {{ tweet.text }}</li>
+                    <li ng-repeat="followTweets in followingTweets">{{ followings.idUser }}: {{ tweet.text }}</li>
+
                 </ul>
-                <div class="col-md-offset-2 col-md-6" id="right">
-                    <h3>_feed:</h3>
+        </div>
+        <div class="jumbotron"><!--http://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp-->
 
-                    <ul class="chatbox">
-                        <li ng-repeat="tweet in userTweets">{{ userId }}: {{ tweet.text }}</li>
-                        <p>Following:</p>
-                        <li ng-repeat="followTweets in followingTweets">{{ followings.idUser }}: {{ tweet.text }}</li>
-
-                    </ul>
-                </div>
-            </div>
+            <footer>
+                <p>Marc Cano</p>
+                <p>2n DAM</p>
+                <p>M07 Interficies</p>
+                <a href="http://virtual.ecaib.org/">http://virtual.ecaib.org/</a>
+            </footer>
         </div>
 
-
-    <!-- Modules -->
-    <script src="app.js"></script>
-    <!-- Controllers -->
-    <script src="controller.js"></script>
+        <!-- Modules -->
+        <script src="app.js"></script>
+        <!-- Controllers -->
+        <script src="controller.js"></script>
 
     </body>
 </html>

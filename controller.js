@@ -1,46 +1,14 @@
 /**
  * Created by 46066294p on 18/02/16.
  */
-/*app.controller("TweetCtrl", ["$scope", "getUserTweets",
-    // we pass our new getUserTweets factory into the controller
-    function($scope, getUserTweets) {
-        $scope.user = "Marc Cano";
 
-        // we add getUserTweets array to the scope to be used in our ng-repeat
-        $scope.messages = getUserTweets;
-
-        // a method to create new messages; called by ng-submit
-        $scope.addMessage = function() {
-            // calling $add on a synchronized array is like Array.push(),
-            // except that it saves the changes to our database!
-            $scope.messages.$add({
-                user: $scope.user,
-                text: $scope.message
-            });
-
-            // reset the message input
-            $scope.message = "";
-        };
-
-
-        // if the messages are empty, add something for fun!
-        $scope.messages.$loaded(function() {
-            if ($scope.messages.length === 0) {
-                $scope.messages.$add({
-                    user: "Firebase Docs",
-                    text: "Hello world!"
-                });
-            }
-        });
-    }
-]);*/
 
 app.controller('TweetCtrl', ["$scope", "getUser", "getUserTweets", "getFollowings", "getFollowingTweets",
     function($scope, getUser, getUserTweets, getFollowings, getFollowingTweets) {
 
         $scope.setUser = function() {
             $scope.userId = $scope.usuari;
-            //$scope.usuari = $scope.usuari;
+            $scope.usuari = "";
             var dades = getUser($scope.userId);
             $scope.userName = dades.nom;
             $scope.userDesc = dades.desc;
@@ -65,7 +33,7 @@ app.controller('TweetCtrl', ["$scope", "getUser", "getUserTweets", "getFollowing
         }*/
 
         $scope.followTweets = function() {
-            $scope.followingTweets.$add({idUser: $scope.tweetsDeSeguidores});
+            $scope.followingTweets.$add({idUserTweet: $scope.follow()});
             $scope.tweetsDeSeguidores = "";
         }
 

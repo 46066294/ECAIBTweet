@@ -1,0 +1,40 @@
+header{
+    border: solid 2px green;
+
+}
+body{
+    background-color: #709abf;
+    text-align: center;
+}
+.chatbox{
+    list-style: none;
+}
+
+.footer{
+    background-color: #68afbf;
+    text-align-all: left;
+}
+
+.cap{
+    background-color: #397cbf;
+    text-align: left;
+    margin: 20px;
+}
+
+.dades{
+    background-color: #397cbf;
+    text-align: left;
+    margin: 20px;
+}
+
+.followB{
+    background-color: #397cbf;
+    text-align: right;
+    margin: 20px;
+}
+
+.tweetB{
+    background-color: #397cbf;
+    text-align: right;
+    margin: 20px;
+}
